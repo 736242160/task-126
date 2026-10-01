@@ -1,0 +1,46 @@
+{
+  "systems": [
+    {"name": "行政", "levels": ["省", "市", "县", "街道"]},
+    {"name": "统计", "levels": ["大区", "片区"]}
+  ],
+  "divisions": [
+    {"system": "行政", "name": "浙江省", "level": "省", "parent": null,
+     "extent": [[0, 0], [10, 10]]},
+    {"system": "行政", "name": "杭州市", "level": "市", "parent": "浙江省",
+     "extent": [[1, 1], [4, 4]]},
+    {"system": "行政", "name": "西湖区", "level": "县", "parent": "杭州市",
+     "extent": [[1, 1], [2, 2]]},
+    {"system": "行政", "name": "某街道", "level": "街道", "parent": "西湖区",
+     "extent": [[1.2, 1.2], [1.5, 1.5]]},
+    {"system": "行政", "name": "宁波市", "level": "市", "parent": "浙江省",
+     "extent": [[5, 5], [8, 8]]},
+    {"system": "行政", "name": "绍兴市", "level": "市", "parent": "浙江省",
+     "extent": [[4, 4], [5, 5]]},
+    {"system": "行政", "name": "越城区", "level": "县", "parent": "绍兴市",
+     "extent": [[4.2, 4.2], [4.8, 4.8]]},
+    {"system": "行政", "name": "杭州市", "level": "市", "parent": "浙江省",
+     "extent": [[1, 1], [4, 4]]},
+
+    {"system": "统计", "name": "华东区", "level": "大区", "parent": null,
+     "extent": [[5, 5], [12, 12]]},
+    {"system": "统计", "name": "杭州片区", "level": "片区", "parent": "华东区",
+     "extent": [[1, 1], [4, 4]],
+     "refs": ["行政.杭州市"]},
+    {"system": "统计", "name": "环甲", "level": "片区", "parent": "环乙",
+     "extent": [[20, 20], [21, 21]]},
+    {"system": "统计", "name": "环乙", "level": "片区", "parent": "环甲",
+     "extent": [[22, 22], [23, 23]]},
+
+    {"system": "行政", "name": "绍兴市A", "level": "市", "parent": "统计.华东区",
+     "extent": [[6, 6], [7, 7]]},
+    {"system": "行政", "name": "温州市", "level": "市", "parent": "不存在的省",
+     "extent": [[8, 8], [9, 9]]}
+  ],
+  "operations": [
+    {"type": "add", "system": "行政", "name": "嘉兴市", "level": "市",
+     "parent": "浙江省", "extent": [[2, 3], [3, 5]]},
+    {"type": "reparent", "system": "行政", "name": "西湖区", "new_parent": "宁波市"},
+    {"type": "delete", "system": "行政", "name": "绍兴市"},
+    {"type": "delete", "system": "行政", "name": "杭州市"}
+  ]
+}
